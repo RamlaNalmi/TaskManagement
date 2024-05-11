@@ -1,50 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".SignUpActivity">
 
+    <!-- EditText for Name -->
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email" />
+        android:layout_margin="16dp"
+        android:hint="Name"/>
 
+    <!-- EditText for Email -->
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword" />
+        android:layout_below="@id/etName"
+        android:layout_margin="16dp"
+        android:hint="Email"/>
 
-    <Button
-        android:id="@+id/buttonSignup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign Up" />
-
+    <!-- Error message for Email -->
     <TextView
-        android:id="@+id/errorTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_red_dark"
-        android:textStyle="bold"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/textLogin"
+        android:id="@+id/tvEmailError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/etEmail"
+        android:layout_margin="8dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"/>
+
+    <!-- EditText for Password -->
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvEmailError"
+        android:layout_margin="16dp"
+        android:inputType="textPassword"
+        android:hint="Password"/>
+
+    <!-- EditText for Confirm Password -->
+    <EditText
+        android:id="@+id/etConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etPassword"
+        android:layout_margin="16dp"
+        android:inputType="textPassword"
+        android:hint="Confirm Password"/>
+
+    <!-- Button for Signup -->
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etConfirmPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="Sign Up"/>
+
+    <!-- TextView for Login Link -->
+    <TextView
+        android:id="@+id/tvLoginLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSignup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:text="Already have an account? Login"
 
-        android:textStyle="bold"
-        android:clickable="true"
-        android:onClick="navigateToLogin"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal" />
+        android:textStyle="bold"/>
 
-</LinearLayout>
+</RelativeLayout>

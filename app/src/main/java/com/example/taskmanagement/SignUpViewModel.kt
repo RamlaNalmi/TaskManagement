@@ -1,23 +1,30 @@
 package com.example.taskmanagement
 
-import com.example.taskmanagement.database.repositories.UserRepository
-
-
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import androidx.lifecycle.viewModelScope
+import com.example.taskmanagement.database.entities.User
+import com.example.taskmanagement.database.repositories.UserRepository
+import kotlinx.coroutines.launch
 
-class SignUpViewModel(private val repository: UserRepository) : ViewModel() {
+class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    suspend fun signup(email: String, password: String): Boolean {
-        return withContext(Dispatchers.IO) {
-            val existingUser = repository.getUserByEmail(email)
-            if (existingUser == null) {
-                repository.addUser(email, password)
-                true // Signup successful
-            } else {
-                false // Username already exists
+    fun signUpUser(name: String, email: String, password: String, callback: (Boolean) -> Unit) {
+        // You can add validation logic here if needed
+
+        // Create a new user object
+        val user = User(name = name, email = email, password = password)
+
+        // Insert the user into the database using a coroutine
+        viewModelScope.launch {
+            try {
+                userRepository.insertUser(user)
+                callback(true) // Callback indicating successful signup
+            } catch (e: Exception) {
+                callback(false) // Callback indicating failed signup
             }
         }
     }
+
+    // You can add additional methods here as needed
 }
+

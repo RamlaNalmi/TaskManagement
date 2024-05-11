@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">TaskManagement</string>
+    <string name="priority_prompt">Priority</string>
+    <string name="category_prompt">Category</string>
+
+    <string-array name="priorities">
+    <item>High</item>
+    <item>Medium</item>
+        <item>Low</item>
+    </string-array>
+
+    <string-array name="categories">
+        <item>No Category</item>
+        <item>Work</item>
+        <item>Personal</item>
+        <item>Home</item>
+        <!-- Add more categories as needed -->
+    </string-array>
 </resources>

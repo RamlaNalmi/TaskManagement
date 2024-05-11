@@ -1,15 +1,15 @@
 package com.example.taskmanagement.database.repositories
 
 import com.example.taskmanagement.database.AppDatabase
+import com.example.taskmanagement.database.dao.UserDao
 import com.example.taskmanagement.database.entities.User
 
-class UserRepository(private val db:AppDatabase) {
-
-
-    suspend fun addUser(email: String, password: String) {
-        val user = User(email = email, password = password)
-        db.getUserDao().insertUser(user)
+class UserRepository(private val userDao: UserDao) {
+    suspend fun insertUser(user: User) = userDao.insertUser(user)
+    suspend fun getUserByEmail(email: String) = userDao.getUserByEmail(email)
+    suspend fun doesUserExist(email: String): Boolean {
+        val user = userDao.getUserByEmail(email)
+        return user != null
     }
-
-    suspend fun getUserByEmail(email: String) = db.getUserDao().getUserByEmail(email)
 }
+

@@ -7,11 +7,9 @@ import com.example.taskmanagement.database.entities.User
 
 @Dao
 interface UserDao {
-
     @Insert
     suspend fun insertUser(user: User)
 
-
-    @Query("SELECT * FROM users WHERE email = :email")
+    @Query("SELECT * FROM User WHERE email = :email")
     suspend fun getUserByEmail(email: String): User?
 }

@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etTaskName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Task Name" />
+
+    <EditText
+        android:id="@+id/etTaskDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etTaskName"
+        android:layout_marginTop="8dp"
+        android:hint="Task Description" />
+
+    <EditText
+        android:id="@+id/etTaskDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etTaskDescription"
+        android:layout_marginTop="8dp"
+        android:hint="Task Date"
+        android:focusable="false" /> <!-- Set focusable to false to prevent the user from typing -->
+
+
+    <ImageButton
+        android:id="@+id/btnSelectDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/etTaskDate"
+        android:layout_alignBottom="@+id/etTaskDate"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="9dp"
+        app:srcCompat="@android:drawable/ic_menu_today" />
+
+    <EditText
+        android:id="@+id/etTaskTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etTaskDate"
+        android:layout_marginTop="8dp"
+        android:hint="Task Time" />
+
+    <Spinner
+        android:id="@+id/spinnerPriority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etTaskTime"
+        android:layout_marginTop="8dp"
+        android:entries="@array/priorities"
+        android:prompt="@string/priority_prompt" />
+
+    <Spinner
+        android:id="@+id/spinnerCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerPriority"
+        android:layout_marginTop="8dp"
+        android:entries="@array/categories"
+        android:prompt="@string/category_prompt" />
+
+    <Button
+        android:id="@+id/btnSaveTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerCategory"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Save" />
+
+</RelativeLayout>
