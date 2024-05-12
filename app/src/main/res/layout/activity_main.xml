@@ -1,47 +1,130 @@
-<!-- task_page_layout.xml -->
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/hv">
 
-    <!-- Horizontal category selection bar -->
+    <!-- Priority Filter ChipGroup -->
     <HorizontalScrollView
-        android:id="@+id/categorySelectionBar"
+        android:id="@+id/priorityChipScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp">
 
-        <LinearLayout
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/priorityChipGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
 
-            <!-- Add category selection items dynamically here -->
-            <!-- Example: -->
-            <TextView
-                android:id="@+id/categoryItem1"
+            app:chipSpacingHorizontal="8dp"
+            app:chipSpacingVertical="8dp"
+            app:singleSelection="true">
+
+            <!-- Priority Chips -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPriorityAll"
+                style="@style/SelectedChipStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="Category 1"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:text="All" />
 
-            <TextView
-                android:id="@+id/categoryItem2"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPriorityHigh"
+                style="@style/UnselectedChipStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="Category 2"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:text="High" />
 
-            <!-- Add more category items as needed -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPriorityMedium"
+                style="@style/UnselectedChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium" />
 
-        </LinearLayout>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPrioritySmall"
+                style="@style/UnselectedChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low" />
+
+            <!-- Add more priority chips as needed -->
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- Category Filter ChipGroup -->
+    <HorizontalScrollView
+        android:id="@+id/categoryChipScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priorityChipScrollView"
+        android:layout_marginTop="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/categoryChipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:chipSpacingHorizontal="8dp"
+            app:chipSpacingVertical="8dp"
+            app:singleSelection="true">
+
+            <!-- Category Chips -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCategoryAll"
+                style="@style/SelectedChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCategoryWork"
+                style="@style/UnselectedChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Work" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCategoryStudy"
+                style="@style/UnselectedChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Study" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCategoryPersonal"
+                style="@style/UnselectedChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personal" />
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCategoryErrands"
+                style="@style/UnselectedChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Errands" />
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCategorywellbeing"
+                style="@style/UnselectedChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wellbeing" />
+
+
+            <!-- Add more category chips as needed -->
+
+        </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 
     <!-- RecyclerView to display tasks -->
@@ -49,15 +132,26 @@
         android:id="@+id/taskRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/categorySelectionBar"
+        android:layout_below="@id/categoryChipScrollView"
         android:layout_marginTop="16dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
+        android:clipChildren="false"
         android:clipToPadding="false"
-        android:clipChildren="false"/>
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp" />
+
+    <TextView
+        android:id="@+id/checkCompletedTasksTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/taskRecyclerView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:onClick="onCheckCompletedTasksClicked"
+        android:text="Check all completed tasks"
+        android:textColor="@android:color/holo_blue_dark" />
 
     <!-- FloatingActionButton to add new tasks -->
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/AddTask"
         android:layout_width="wrap_content"
@@ -67,14 +161,24 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="27dp"
         android:layout_marginBottom="15dp"
-        android:src="@android:drawable/ic_menu_add" />
+        android:src="@android:drawable/ic_menu_add"
+        app:backgroundTint="@color/secondary"
+        app:rippleColor="@color/acc" />
 
+    <!-- Bottom Navigation View -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        app:menu="@menu/bottom_navigation_menu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="69dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp" />
+        android:layout_marginBottom="0dp"
+        android:background="#CEE9F8"
+        app:backgroundTint="@color/primary"
+        app:itemActiveIndicatorStyle="@style/CustomBottomNavigationView"
+        app:itemIconTint="@color/grey"
+
+        app:itemTextColor="@color/grey"
+        app:labelVisibilityMode="auto"
+        app:menu="@menu/bottom_navigation_menu" />
 
 </RelativeLayout>

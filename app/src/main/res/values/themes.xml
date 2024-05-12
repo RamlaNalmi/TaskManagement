@@ -1,8 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.TaskManagement" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Set the base color -->
+        <item name="colorPrimary">#CEE9F8</item>
+
+        <!-- Change bottom navigation title size -->
+        <item name="bottomNavigationStyle">@style/CustomBottomNavigationView</item>
+    </style>
+
+    <!-- Define custom style for bottom navigation view -->
+    <style name="CustomBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <!-- Change the text appearance for bottom navigation items -->
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="Theme.TaskManagement" parent="Base.Theme.TaskManagement" />

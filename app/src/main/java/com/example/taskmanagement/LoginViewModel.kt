@@ -8,18 +8,13 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    fun loginUser(email: String, password: String, onComplete: (Boolean) -> Unit) {
-        // You can add validation logic here if needed
-
-        // Check if the user exists in the database
+    fun loginUser(email: String, password: String, onComplete: (Boolean, Int?) -> Unit) {
         viewModelScope.launch {
             val user = userRepository.getUserByEmail(email)
             if (user != null && user.password == password) {
-                // User exists and password matches, login successful
-                onComplete(true)
+                onComplete(true, user.id) // Pass the user ID
             } else {
-                // User does not exist or password does not match, login failed
-                onComplete(false)
+                onComplete(false, null)
             }
         }
     }

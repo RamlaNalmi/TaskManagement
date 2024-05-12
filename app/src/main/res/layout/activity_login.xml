@@ -3,15 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".LoginActivity">
+
+    <!-- Title: Login4 -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:text="Login"
+        android:textColor="@color/secondary"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <!-- EditText for Email -->
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Email"/>
+        android:layout_below="@id/tvTitle"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/secondary"
+        android:hint="Email"
+        android:textColorHint="@color/grey" />
 
     <!-- EditText for Password -->
     <EditText
@@ -19,9 +37,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/etEmail"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/secondary"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:hint="Password"/>
+        android:textColorHint="@color/grey" />
 
     <!-- Button for Login -->
     <Button
@@ -31,7 +53,8 @@
         android:layout_below="@id/etPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:text="Login"/>
+        android:backgroundTint="@color/secondary"
+        android:text="Login" />
 
     <!-- TextView for Sign Up Link -->
     <TextView
@@ -42,6 +65,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="Don't have an account? Sign Up"
-        android:textStyle="bold"/>
+        android:textColor="@color/secondary"
+        android:textStyle="bold" />
 
 </RelativeLayout>

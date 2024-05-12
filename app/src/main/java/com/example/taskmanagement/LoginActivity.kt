@@ -37,10 +37,11 @@ class LoginActivity : AppCompatActivity() {
             val password = etPassword.text.toString()
 
             // Perform login
-            loginViewModel.loginUser(email, password) { success ->
+            loginViewModel.loginUser(email, password) { success, userId ->
                 if (success) {
-                    // Login successful, navigate to MainActivity
+                    // Login successful, pass user ID to MainActivity
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.putExtra("userId", userId)
                     startActivity(intent)
                     finish() // Finish LoginActivity so the user can't go back
                 } else {

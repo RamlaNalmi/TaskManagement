@@ -1,7 +1,37 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.TaskManagement" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Set the base color -->
+        <item name="colorPrimary">#CEE9F8</item>
+        <item name="colorSecondary">@color/secondary</item>
+
+        <!-- Change bottom navigation title size -->
+        <item name="bottomNavigationStyle">@style/CustomBottomNavigationView</item>
     </style>
+
+    <!-- Define custom style for bottom navigation view -->
+    <style name="CustomBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <!-- Change the text appearance for bottom navigation items -->
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@color/acc</item> <!-- Replace with your primary color -->
+        <item name="itemBackground">@color/acc</item> <!-- Replace with your navigation item color -->
+        <item name="itemIconTint">@color/grey</item> <!-- Replace with your navigation item icon color -->
+        <item name="itemTextColor">@color/grey</item>
+
+        <!-- Style for active item text -->
+
+
+    </style>
+    <style name="SelectedChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/secondary</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="UnselectedChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/acc</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+
+    <style name="Theme.TaskManagement" parent="Base.Theme.TaskManagement" />
 </resources>

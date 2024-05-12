@@ -45,10 +45,11 @@ class SignUpActivity : AppCompatActivity() {
 
             // Perform validation, e.g., check if passwords match
             if (password == confirmPassword) {
-                signupViewModel.signUpUser(name, email, password)  { success ->
+                signupViewModel.signUpUser(name, email, password)  { success ,userId ->
                     if (success) {
                         // User signed up successfully, navigate to MainActivity
                         val intent = Intent(this@SignUpActivity, MainActivity::class.java)
+                        intent.putExtra("userId", userId)
                         startActivity(intent)
                         finish() // Finish SignUpActivity so the user can't go back
                     } else {

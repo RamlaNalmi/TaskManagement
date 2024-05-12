@@ -2,18 +2,25 @@
     <string name="app_name">TaskManagement</string>
     <string name="priority_prompt">Priority</string>
     <string name="category_prompt">Category</string>
+    <string name="section_previous_title">Previous\n</string>
+    <string name="section_today_title">Today</string>
+    <string name="section_future_title">Future</string>
+    <string name="section_completed_today_title">Completed Today</string>
 
     <string-array name="priorities">
-    <item>High</item>
-    <item>Medium</item>
+        <item>No Priority</item>
+        <item>High</item>
+        <item>Medium</item>
         <item>Low</item>
     </string-array>
 
     <string-array name="categories">
         <item>No Category</item>
         <item>Work</item>
+        <item>Study</item>
         <item>Personal</item>
-        <item>Home</item>
+        <item>Errands</item>
+        <item>Wellbeing</item>
         <!-- Add more categories as needed -->
     </string-array>
 </resources>

@@ -3,15 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".SignUpActivity">
+
+    <!-- Title: Create Account -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:text="Create Account"
+        android:textColor="@color/secondary"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <!-- EditText for Name -->
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Name"/>
+        android:layout_below="@id/tvTitle"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/grey"
+        android:hint="Name"
+        android:textColor="@color/secondary"
+        android:textColorHint="@color/grey" />
 
     <!-- EditText for Email -->
     <EditText
@@ -19,8 +39,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/etName"
-        android:layout_margin="16dp"
-        android:hint="Email"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/grey"
+        android:hint="Email"
+        android:textColorHint="@color/grey" />
 
     <!-- Error message for Email -->
     <TextView
@@ -28,9 +53,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/etEmail"
-        android:layout_margin="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:textColor="@android:color/holo_red_dark"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <!-- EditText for Password -->
     <EditText
@@ -38,9 +64,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvEmailError"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/grey"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:hint="Password"/>
+        android:textColorHint="@color/grey" />
 
     <!-- EditText for Confirm Password -->
     <EditText
@@ -48,9 +79,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/etPassword"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/grey"
+        android:hint="Confirm Password"
         android:inputType="textPassword"
-        android:hint="Confirm Password"/>
+        android:textColorHint="@color/grey" />
 
     <!-- Button for Signup -->
     <Button
@@ -60,7 +96,8 @@
         android:layout_below="@id/etConfirmPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:text="Sign Up"/>
+        android:backgroundTint="@color/secondary"
+        android:text="Sign Up" />
 
     <!-- TextView for Login Link -->
     <TextView
@@ -71,7 +108,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="Already have an account? Login"
-
-        android:textStyle="bold"/>
+        android:textColor="@color/secondary"
+        android:textStyle="bold" />
 
 </RelativeLayout>

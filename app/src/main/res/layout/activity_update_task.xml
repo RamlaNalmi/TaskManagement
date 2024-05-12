@@ -1,102 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#8EC8E8"
+    android:layout_height="match_parent"
+    android:background="@drawable/hv"
     android:padding="16dp">
 
+    <!-- Back button -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#A3DEFF"
+        android:tint="@color/secondary"
+        app:srcCompat="@drawable/previous" />
+
+    <!-- Task Name -->
     <EditText
         android:id="@+id/etTaskName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/grey"
+        android:layout_below="@id/btnBack"
+        android:layout_marginTop="46dp"
+        android:backgroundTint="@color/secondary"
         android:hint="Task Name"
-        android:textColorHint="@color/grey" />
+        android:textColor="@color/secondary" />
 
+    <!-- Task Description -->
     <EditText
         android:id="@+id/etTaskDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/etTaskName"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/grey"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/secondary"
         android:hint="Task Description"
-        android:textColorHint="@color/grey" />
+        android:textColor="@color/secondary"/>
 
+    <!-- Date selection -->
     <EditText
         android:id="@+id/etTaskDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/etTaskDescription"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/grey"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/secondary"
         android:focusable="false"
         android:hint="Task Date"
-        android:textColorHint="@color/grey" /> <!-- Set focusable to false to prevent the user from typing -->
-
+        android:textColor="@color/secondary"/>
 
     <ImageButton
         android:id="@+id/btnSelectDate"
-        android:layout_width="48dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/etTaskDate"
         android:layout_alignBottom="@+id/etTaskDate"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="9dp"
-        android:background="#8EC8E8"
-        app:srcCompat="@android:drawable/ic_menu_today"
-        app:tint="@color/grey" />
+        android:backgroundTint="#A3DEFF"
+        app:tint="@color/black"
+        app:srcCompat="@android:drawable/ic_menu_today" />
 
+    <!-- Time selection -->
     <EditText
         android:id="@+id/etTaskTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/etTaskDate"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/grey"
-        android:focusable="false"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/secondary"
         android:hint="Task Time"
-        android:textColorHint="@color/grey" />
+        android:textColor="@color/secondary"/>
 
     <ImageButton
         android:id="@+id/btnSelectTime"
-        android:layout_width="46dp"
-        android:layout_height="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/etTaskTime"
         android:layout_alignBottom="@+id/etTaskTime"
-        android:layout_marginEnd="1dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="9dp"
-        android:background="#8EC8E8"
-        android:tint="@color/grey"
+        android:backgroundTint="#A3DEFF"
         app:srcCompat="@drawable/icons8_clock" />
 
+    <!-- Priority selection -->
     <Spinner
         android:id="@+id/spinnerPriority"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/etTaskTime"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/grey"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/secondary"
         android:entries="@array/priorities"
-        android:prompt="@string/priority_prompt" />
+        android:prompt="@string/priority_prompt"
+        android:textColor="@color/secondary"/>
 
+    <!-- Category selection -->
     <Spinner
         android:id="@+id/spinnerCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/spinnerPriority"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/grey"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/secondary"
         android:entries="@array/categories"
-        android:prompt="@string/category_prompt" />
+        android:prompt="@string/category_prompt"
+        android:textColor="@color/secondary"/>
 
+    <!-- Save button -->
     <Button
         android:id="@+id/btnSaveTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/spinnerCategory"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/secondary"
         android:text="Save" />
 
 </RelativeLayout>
