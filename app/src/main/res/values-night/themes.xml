@@ -4,7 +4,8 @@
         <!-- Set the base color -->
         <item name="colorPrimary">#CEE9F8</item>
         <item name="colorSecondary">@color/secondary</item>
-
+        <item name="android:textColorPrimary">@color/grey</item>
+        <item name="android:textColorSecondary">@color/gray</item>
         <!-- Change bottom navigation title size -->
         <item name="bottomNavigationStyle">@style/CustomBottomNavigationView</item>
     </style>
@@ -22,6 +23,13 @@
 
 
     </style>
+
+
+
+
+
+
+
     <style name="SelectedChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipBackgroundColor">@color/secondary</item>
         <item name="android:textColor">@color/white</item>

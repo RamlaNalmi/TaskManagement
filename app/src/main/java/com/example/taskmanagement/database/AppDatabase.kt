@@ -9,7 +9,7 @@ import com.example.taskmanagement.database.dao.UserDao
 import com.example.taskmanagement.database.entities.Task
 import com.example.taskmanagement.database.entities.User
 
-@Database(entities = [User::class, Task::class], version = 1)
+@Database(entities = [User::class, Task::class], version = 30)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun getUserDao(): UserDao
     abstract fun getTaskDao(): TaskDao

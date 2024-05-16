@@ -21,6 +21,9 @@ class TaskViewModel(private val taskRepository: TaskRepository) : ViewModel() {
     private val _completeTaskList = MutableLiveData<List<Task>>()
     val completeTaskList: LiveData<List<Task>> = _completeTaskList
 
+    private val _calList =MutableLiveData<List<Task>>()
+    val calList: LiveData<List<Task>> = _calList
+
 
     private var selectedPriority: String? = null
     private var selectedCategory: String? = null
@@ -61,6 +64,12 @@ class TaskViewModel(private val taskRepository: TaskRepository) : ViewModel() {
     fun getCompletedTaskForUser(userId: Int) {
         viewModelScope.launch {
             _completeTaskList.value = taskRepository.getAllCompletedTasksForUser(userId)
+        }
+    }
+
+    fun getTasksForDate(selectedDate : String, userId: Int){
+        viewModelScope.launch {
+            _calList.value = taskRepository.getTasksForDate(selectedDate, userId)
         }
     }
 

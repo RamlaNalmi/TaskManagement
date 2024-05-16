@@ -37,11 +37,13 @@ class LoginActivity : AppCompatActivity() {
             val password = etPassword.text.toString()
 
             // Perform login
-            loginViewModel.loginUser(email, password) { success, userId ->
+            loginViewModel.loginUser(email, password) { success, userInfo ->
                 if (success) {
-                    // Login successful, pass user ID to MainActivity
+                    // Login successful, pass user ID and name to MainActivity
+                    val (userId, name) = userInfo ?: return@loginUser
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     intent.putExtra("userId", userId)
+                    intent.putExtra("name", name)
                     startActivity(intent)
                     finish() // Finish LoginActivity so the user can't go back
                 } else {
@@ -49,6 +51,8 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "Login failed", Toast.LENGTH_SHORT).show()
                 }
             }
+
+
         }
 
         // Set up onClickListener for the sign-up link

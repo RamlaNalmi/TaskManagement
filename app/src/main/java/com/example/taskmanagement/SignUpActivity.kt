@@ -45,22 +45,32 @@ class SignUpActivity : AppCompatActivity() {
 
             // Perform validation, e.g., check if passwords match
             if (password == confirmPassword) {
-                signupViewModel.signUpUser(name, email, password)  { success ,userId ->
+                signupViewModel.signUpUser(name, email, password) { success,name, userId  ->
                     if (success) {
                         // User signed up successfully, navigate to MainActivity
                         val intent = Intent(this@SignUpActivity, MainActivity::class.java)
                         intent.putExtra("userId", userId)
+                        intent.putExtra("name", name) // Pass the user's name to MainActivity
                         startActivity(intent)
                         finish() // Finish SignUpActivity so the user can't go back
                     } else {
                         // Show error message if signup failed
-                        Toast.makeText(this@SignUpActivity, "Sign up failed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@SignUpActivity, "Sign up failed", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             } else {
                 // Show error message that passwords don't match
-                Toast.makeText(this@SignUpActivity, "Passwords don't match", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@SignUpActivity, "Passwords don't match", Toast.LENGTH_SHORT)
+                    .show()
             }
+        }
+
+
+            tvLoginLink.setOnClickListener {
+            // Navigate to SignUpActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -8,6 +8,7 @@ import android.content.Intent
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 
 import android.widget.EditText
@@ -37,17 +38,28 @@ class MainActivity : AppCompatActivity() {
 
         val taskDao = AppDatabase.getInstance(applicationContext).getTaskDao()
         val taskRepository = TaskRepository(taskDao)
-        taskViewModel = ViewModelProvider(this, TaskViewModelFactory(taskRepository)).get(TaskViewModel::class.java)
-
+        taskViewModel = ViewModelProvider(
+            this,
+            TaskViewModelFactory(taskRepository)
+        ).get(TaskViewModel::class.java)
 
 
         val userId = intent.getIntExtra("userId", -1)
+        val name = intent.getStringExtra("name")
+        val userNameTextView = findViewById<TextView>(R.id.userNameTextView)
+        userNameTextView.text = "Welcome, $name"
 
         val taskRecyclerView = findViewById<RecyclerView>(R.id.taskRecyclerView)
         taskRecyclerView.layoutManager = LinearLayoutManager(this)
 
         // Initialize TaskAdapter
-        taskAdapter = TaskAdapter(taskViewModel)
+
+        if (name != null) {
+            taskAdapter = TaskAdapter(taskViewModel,name)
+        } else {
+            // Handle the case where name is null
+            taskAdapter = TaskAdapter(taskViewModel,"")
+        }
 
         // Set adapter to RecyclerView
         taskRecyclerView.adapter = taskAdapter
@@ -60,8 +72,10 @@ class MainActivity : AppCompatActivity() {
 
         taskViewModel.getAllTasksForUser(userId)
         taskViewModel.taskList.observe(this, { tasks ->
+            Log.d("MainActivity", "Observer invoked, tasks: $tasks")
             taskAdapter.submitList(tasks)
         })
+
 
         val chipPriorityAll = findViewById<Chip>(R.id.chipPriorityAll)
         chipPriorityAll.isChecked = true
@@ -82,7 +96,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 null
             }
-            taskViewModel.setSelectedPriority(selectedPriority,userId)
+            taskViewModel.setSelectedPriority(selectedPriority, userId)
             updateChipColors(priorityChipGroup, checkedId)
         }
 
@@ -94,50 +108,71 @@ class MainActivity : AppCompatActivity() {
             } else {
                 null
             }
-            taskViewModel.setSelectedCategory(selectedCategory,userId)
+            taskViewModel.setSelectedCategory(selectedCategory, userId)
             updateChipColors(categoryChipGroup, checkedId)
         }
 
 
         val checkCompletedTasksTextView = findViewById<TextView>(R.id.checkCompletedTasksTextView)
         checkCompletedTasksTextView.setOnClickListener {
-            openCompletedTasksActivity(userId)
+            if (name != null) {
+                openCompletedTasksActivity(userId, name)
+            } else {
+                // Handle the case where name is null
+                openCompletedTasksActivity(userId, "")
+            }
+
         }
 
 
-
-
-
-
-
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        val iconColorSelector = ContextCompat.getColorStateList(this, R.drawable.bottom_nav_icon_color_selector)
+        val iconColorSelector =
+            ContextCompat.getColorStateList(this, R.drawable.bottom_nav_icon_color_selector)
         bottomNavigationView.itemIconTintList = iconColorSelector
         bottomNavigationView.itemTextColor = iconColorSelector
+        bottomNavigationView.selectedItemId = R.id.menu_tasks // or R.id.menu_calendar, R.id.menu_profile, etc.
+
+
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_tasks -> {
-                    // Show the tasks fragment or perform any related action
+                    // Start MainActivity
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("userId", userId)
+                    intent.putExtra("name", name)
+                    startActivity(intent)
                     true
                 }
 
                 R.id.menu_calendar -> {
-                    // Show the calendar fragment or perform any related action
+                    // Start CalendarActivity
+                    val intent = Intent(this, CalendarActivity::class.java)
+                    intent.putExtra("userId", userId)
+                    intent.putExtra("name", name)
+                    startActivity(intent)
                     true
                 }
 
                 R.id.menu_profile -> {
-                    // Show the profile fragment or perform any related action
+                    // Start ProfileActivity or show profile fragment
                     true
                 }
 
                 else -> false
             }
+
+
         }
+
+
         val addTask = findViewById<FloatingActionButton>(R.id.AddTask)
         addTask.setOnClickListener {
-            showAddTaskDialog(userId)
+
+            addTask.setOnClickListener {
+                    showAddTaskDialog(userId)
+            }
+
         }
     }
 
@@ -237,11 +272,12 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun openCompletedTasksActivity(userId: Int) {
+    private fun openCompletedTasksActivity(userId: Int, name: String) {
         val intent = Intent(this, CompletedTasksActivity::class.java)
         intent.putExtra("userId", userId)
+        intent.putExtra("name", name)
         startActivity(intent)
-        finish()
+
     }
 
 

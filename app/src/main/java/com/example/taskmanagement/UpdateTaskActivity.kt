@@ -25,7 +25,7 @@ class UpdateTaskActivity : AppCompatActivity() {
     private lateinit var prioritySpinner: Spinner
     private lateinit var categorySpinner: Spinner
     private lateinit var saveButton: Button
-
+    private lateinit var backButton: ImageButton
 
 
 
@@ -34,7 +34,7 @@ class UpdateTaskActivity : AppCompatActivity() {
         setContentView(R.layout.activity_update_task)
 
         val taskId = intent.getIntExtra("taskId", -1)
-
+        val userId = intent.getIntExtra("userId", -1)
         // Initialize views
         taskNameEditText = findViewById(R.id.etTaskName)
         taskDescriptionEditText = findViewById(R.id.etTaskDescription)
@@ -43,6 +43,7 @@ class UpdateTaskActivity : AppCompatActivity() {
         prioritySpinner = findViewById(R.id.spinnerPriority)
         categorySpinner = findViewById(R.id.spinnerCategory)
         saveButton = findViewById(R.id.btnSaveTask)
+        backButton = findViewById(R.id.btnBack)
         val btnSelectDate = findViewById<ImageButton>(R.id.btnSelectDate)
         val btnSelectTime = findViewById<ImageButton>(R.id.btnSelectTime)
 
@@ -64,6 +65,8 @@ class UpdateTaskActivity : AppCompatActivity() {
                 updateTask(task)
             }
         }
+
+
 
 
 
@@ -106,7 +109,12 @@ class UpdateTaskActivity : AppCompatActivity() {
             timePickerDialog.show()
         }
 
-
+        backButton.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("userId", userId)
+            startActivity(intent)
+            finish()
+        }
 
     }
 

@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 
 class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    fun signUpUser(name: String, email: String, password: String, callback: (Boolean,Int?) -> Unit) {
+    fun signUpUser(name: String, email: String, password: String, callback: (Boolean, String?, Int?) -> Unit) {
         // You can add validation logic here if needed
 
         // Create a new user object
@@ -18,13 +18,12 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
         viewModelScope.launch {
             try {
                 userRepository.insertUser(user)
-                callback(true,user.id) // Callback indicating successful signup
+                callback(true, user.name, user.id) // Callback indicating successful signup, include name and id
             } catch (e: Exception) {
-                callback(false,null) // Callback indicating failed signup
+                callback(false, null, null) // Callback indicating failed signup
             }
         }
-    }
 
     // You can add additional methods here as needed
-}
+}}
 

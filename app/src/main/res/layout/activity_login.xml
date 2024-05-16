@@ -27,8 +27,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/secondary"
         android:hint="Email"
+        android:textColor="@color/secondary"
         android:textColorHint="@color/grey" />
 
     <!-- EditText for Password -->
@@ -40,9 +40,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/secondary"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColor="@color/secondary"
         android:textColorHint="@color/grey" />
 
     <!-- Button for Login -->

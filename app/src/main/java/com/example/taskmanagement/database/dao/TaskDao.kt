@@ -43,4 +43,7 @@ interface TaskDao {
             "AND (completed = 0)")
     suspend fun getTasksByPriorityAndCategory(userId: Int, priority: String?, category: String?): List<Task>
 
+    @Query("SELECT * FROM Task WHERE userId = :userId AND date = :selectedDate")
+    suspend fun getTasksForDate(selectedDate: String, userId: Int): List<Task>
+
 }

@@ -35,5 +35,6 @@ class TaskRepository (private val taskDao: TaskDao) {
         }
     }
 
+    suspend fun getTasksForDate(selectedDate: String, userId: Int): List<Task> = taskDao.getTasksForDate(selectedDate,userId)
 
 }
