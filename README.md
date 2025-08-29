@@ -5,7 +5,8 @@
 <h1 align="center">📝 Task Management Mobile App</h1>
 
 <p align="center">
-  A modern, feature-rich task management mobile app built with <b>Kotlin</b> and <b>Room Database</b> to help you stay organized and productive.
+  A simple yet powerful Task Management Mobile Application built with <b>Kotlin</b> and <b>Room Database</b>.
+  This app helps users efficiently manage daily tasks with features like creating, editing, filtering, and tracking tasks in a clean and intuitive interface.
 </p>
 
 <p align="center">
@@ -29,7 +30,7 @@
 | 📅 **Calendar View** | Visualize tasks by date for better planning. |
 | 💾 **Persistent Storage** | Tasks are stored locally using Room Database. |
 | 🎨 **Smooth UI/UX** | Intuitive interface with responsive layouts. |
-| ⏰ **Notifications & Reminders** | Stay updated with task deadlines (optional). |
+
 
 </div>
 
@@ -56,7 +57,7 @@ Click the GIF to watch the full video:
 | 💻 Programming    | Kotlin                                   |
 | 🏗️ Architecture   | MVVM (Model-View-ViewModel)             |
 | 💾 Database       | Room (SQLite)                            |
-| 🎨 UI Components  | Jetpack Compose / RecyclerView / LiveData |
+| 🎨 UI Components  | RecyclerView / LiveData |
 | 🛠️ IDE            | Android Studio                           |
 
 ---
@@ -65,4 +66,35 @@ Click the GIF to watch the full video:
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-username/task-management-app.git
+[git clone https://github.com/RamlaNalmi/TaskManagement.git]
+```
+2. **Open in Android Studio**
+- Open Android Studio.
+- Go to File → Open.
+- Select the cloned project folder.
+
+3. **Build & Run**
+- Make sure you have the required SDKs and Kotlin installed.
+- Click the Run button to install the app on an emulator or physical device.
+
+---
+
+## 📝 Usage
+
+- Sign up or log in.
+- Add new tasks with title, description, date, time, priority, and type.
+- Edit, delete, or mark tasks as completed.
+- Filter tasks by priority or type.
+- View tasks in calendar format to plan your schedule.
+
+---
+
+## 🤝 Contributing
+
+- Fork the repository
+- Create a feature branch (git checkout -b feature/YourFeature)
+- Commit your changes (git commit -m 'Add YourFeature')
+- Push to the branch (git push origin feature/YourFeature)
+- Open a Pull Request
+
+---
