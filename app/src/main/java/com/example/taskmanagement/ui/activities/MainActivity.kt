@@ -1,11 +1,10 @@
-package com.example.taskmanagement
+package com.example.taskmanagement.ui.activities
 
 
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,9 +19,13 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.taskmanagement.R
 import com.example.taskmanagement.database.AppDatabase
 import com.example.taskmanagement.database.entities.Task
 import com.example.taskmanagement.database.repositories.TaskRepository
+import com.example.taskmanagement.ui.adapters.TaskAdapter
+import com.example.taskmanagement.ui.viewmodels.TaskViewModel
+import com.example.taskmanagement.ui.viewmodels.TaskViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -42,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             this,
             TaskViewModelFactory(taskRepository)
         ).get(TaskViewModel::class.java)
+
 
 
         val userId = intent.getIntExtra("userId", -1)
@@ -130,7 +134,8 @@ class MainActivity : AppCompatActivity() {
             ContextCompat.getColorStateList(this, R.drawable.bottom_nav_icon_color_selector)
         bottomNavigationView.itemIconTintList = iconColorSelector
         bottomNavigationView.itemTextColor = iconColorSelector
-        bottomNavigationView.selectedItemId = R.id.menu_tasks // or R.id.menu_calendar, R.id.menu_profile, etc.
+        bottomNavigationView.selectedItemId =
+            R.id.menu_tasks // or R.id.menu_calendar, R.id.menu_profile, etc.
 
 
 

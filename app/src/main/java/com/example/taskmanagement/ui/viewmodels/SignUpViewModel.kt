@@ -1,4 +1,4 @@
-package com.example.taskmanagement
+package com.example.taskmanagement.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     fun signUpUser(name: String, email: String, password: String, callback: (Boolean, String?, Int?) -> Unit) {
-        // You can add validation logic here if needed
+
 
         // Create a new user object
         val user = User(name = name, email = email, password = password)

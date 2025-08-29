@@ -1,4 +1,4 @@
-package com.example.taskmanagement
+package com.example.taskmanagement.ui.activities
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -11,10 +11,12 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Spinner
 import androidx.lifecycle.ViewModelProvider
+import com.example.taskmanagement.R
 import com.example.taskmanagement.database.AppDatabase
 import com.example.taskmanagement.database.entities.Task
 import com.example.taskmanagement.database.repositories.TaskRepository
-import java.util.Calendar
+import com.example.taskmanagement.ui.viewmodels.TaskViewModel
+import com.example.taskmanagement.ui.viewmodels.TaskViewModelFactory
 
 class UpdateTaskActivity : AppCompatActivity() {
     private lateinit var taskViewModel: TaskViewModel
@@ -49,7 +51,8 @@ class UpdateTaskActivity : AppCompatActivity() {
 
         val taskDao = AppDatabase.getInstance(applicationContext).getTaskDao()
         val taskRepository = TaskRepository(taskDao)
-        taskViewModel = ViewModelProvider(this, TaskViewModelFactory(taskRepository)).get(TaskViewModel::class.java)
+        taskViewModel = ViewModelProvider(this, TaskViewModelFactory(taskRepository)).get(
+            TaskViewModel::class.java)
 
         taskViewModel.getTaskById(taskId)
         taskViewModel.task.observe(this, { task ->

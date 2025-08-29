@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/hv"
-    tools:context=".CalendarActivity">
+    tools:context=".ui.activities.CalendarActivity">
 
     <CalendarView
         android:id="@+id/calendarView"

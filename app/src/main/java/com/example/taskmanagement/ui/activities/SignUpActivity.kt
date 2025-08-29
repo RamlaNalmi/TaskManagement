@@ -1,4 +1,4 @@
-package com.example.taskmanagement
+package com.example.taskmanagement.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.taskmanagement.R
 import com.example.taskmanagement.database.AppDatabase
 import com.example.taskmanagement.database.repositories.UserRepository
+import com.example.taskmanagement.ui.viewmodels.SignUpViewModel
+import com.example.taskmanagement.ui.viewmodels.SignUpViewModelFactory
 
 
 class SignUpActivity : AppCompatActivity() {
@@ -34,7 +37,8 @@ class SignUpActivity : AppCompatActivity() {
 
         val userDao = AppDatabase.getInstance(applicationContext).getUserDao()
         val userRepository = UserRepository(userDao)
-        signupViewModel = ViewModelProvider(this, SignUpViewModelFactory(userRepository)).get(SignUpViewModel::class.java)
+        signupViewModel = ViewModelProvider(this, SignUpViewModelFactory(userRepository)).get(
+            SignUpViewModel::class.java)
 
         // Set up onClickListener for the signup button
         btnSignup.setOnClickListener {

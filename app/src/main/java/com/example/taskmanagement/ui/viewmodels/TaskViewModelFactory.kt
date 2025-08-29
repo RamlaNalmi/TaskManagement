@@ -1,4 +1,4 @@
-package com.example.taskmanagement
+package com.example.taskmanagement.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -57,7 +57,8 @@ android:background="@drawable/hv">
             style="@style/UnselectedChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medium" />
+            android:text="Medium"
+            android:textStyle="" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipPrioritySmall"

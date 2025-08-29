@@ -1,4 +1,4 @@
-package com.example.taskmanagement
+package com.example.taskmanagement.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +7,12 @@ import android.widget.ImageButton
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.taskmanagement.R
 import com.example.taskmanagement.database.AppDatabase
 import com.example.taskmanagement.database.repositories.TaskRepository
+import com.example.taskmanagement.ui.adapters.CompletedTasksAdapter
+import com.example.taskmanagement.ui.viewmodels.TaskViewModel
+import com.example.taskmanagement.ui.viewmodels.TaskViewModelFactory
 
 class CompletedTasksActivity : AppCompatActivity() {
     private lateinit var taskViewModel: TaskViewModel
@@ -21,7 +25,8 @@ class CompletedTasksActivity : AppCompatActivity() {
 
         val taskDao = AppDatabase.getInstance(applicationContext).getTaskDao()
         val taskRepository = TaskRepository(taskDao)
-        taskViewModel = ViewModelProvider(this, TaskViewModelFactory(taskRepository)).get(TaskViewModel::class.java)
+        taskViewModel = ViewModelProvider(this, TaskViewModelFactory(taskRepository)).get(
+            TaskViewModel::class.java)
 
         val userId = intent.getIntExtra("userId", -1)
         val name = intent.getStringExtra("name")

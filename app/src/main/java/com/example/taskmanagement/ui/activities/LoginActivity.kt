@@ -1,15 +1,19 @@
-package com.example.taskmanagement
+package com.example.taskmanagement.ui.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.taskmanagement.R
 import com.example.taskmanagement.database.AppDatabase
 import com.example.taskmanagement.database.repositories.UserRepository
+import com.example.taskmanagement.ui.viewmodels.LoginViewModel
+import com.example.taskmanagement.ui.viewmodels.LoginViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var loginViewModel: LoginViewModel
@@ -29,7 +33,8 @@ class LoginActivity : AppCompatActivity() {
 
         val userDao = AppDatabase.getInstance(applicationContext).getUserDao()
         val userRepository = UserRepository(userDao)
-        loginViewModel = ViewModelProvider(this, LoginViewModelFactory(userRepository)).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this, LoginViewModelFactory(userRepository)).get(
+            LoginViewModel::class.java)
 
         // Set up onClickListener for the login button
         btnLogin.setOnClickListener {

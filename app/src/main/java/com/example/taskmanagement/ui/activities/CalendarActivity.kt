@@ -1,4 +1,4 @@
-package com.example.taskmanagement
+package com.example.taskmanagement.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.taskmanagement.R
 import com.example.taskmanagement.database.AppDatabase
 import com.example.taskmanagement.database.repositories.TaskRepository
+import com.example.taskmanagement.ui.adapters.CalendarTaskAdapter
+import com.example.taskmanagement.ui.viewmodels.TaskViewModel
+import com.example.taskmanagement.ui.viewmodels.TaskViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CalendarActivity : AppCompatActivity() {
@@ -26,7 +30,8 @@ class CalendarActivity : AppCompatActivity() {
 
         val taskDao = AppDatabase.getInstance(applicationContext).getTaskDao()
         val taskRepository = TaskRepository(taskDao)
-        taskViewModel = ViewModelProvider(this, TaskViewModelFactory(taskRepository)).get(TaskViewModel::class.java)
+        taskViewModel = ViewModelProvider(this, TaskViewModelFactory(taskRepository)).get(
+            TaskViewModel::class.java)
 
         val calRecyclerView = findViewById<RecyclerView>(R.id.tasksRecyclerView)
         calRecyclerView.layoutManager=  LinearLayoutManager(this)
@@ -55,7 +60,8 @@ class CalendarActivity : AppCompatActivity() {
             ContextCompat.getColorStateList(this, R.drawable.bottom_nav_icon_color_selector)
         bottomNavigationView.itemIconTintList = iconColorSelector
         bottomNavigationView.itemTextColor = iconColorSelector
-        bottomNavigationView.selectedItemId = R.id.menu_calendar // or R.id.menu_calendar, R.id.menu_profile, etc.
+        bottomNavigationView.selectedItemId =
+            R.id.menu_calendar // or R.id.menu_calendar, R.id.menu_profile, etc.
 
 
 

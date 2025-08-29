@@ -1,4 +1,4 @@
-package com.example.taskmanagement
+package com.example.taskmanagement.ui.adapters
 
 
 
@@ -12,9 +12,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmanagement.R
+import com.example.taskmanagement.ui.viewmodels.TaskViewModel
 import com.example.taskmanagement.database.entities.Task
 
-class CompletedTasksAdapter(private val taskViewModel: TaskViewModel)  : ListAdapter<Task, CompletedTasksAdapter.CompletedTaskViewHolder>(TaskDiffCallback()) {
+class CompletedTasksAdapter(private val taskViewModel: TaskViewModel)  : ListAdapter<Task, CompletedTasksAdapter.CompletedTaskViewHolder>(
+    TaskDiffCallback()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompletedTaskViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.completed_task_item, parent, false)
